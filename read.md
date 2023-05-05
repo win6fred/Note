@@ -1,9 +1,0 @@
-# 文件四种状态
-untracked：未跟踪，此文件未加入到git库，不参与版本控制
-unmodify：文件已加入到git库，未修改，文件内容与本地库的文件快照完全一致
-modified：文件已加入到git库，经过修改，文件内容与本地库的文件快照不一致
-staged：暂存状态
-
-rwe  fasfasd ad 
-
-.
