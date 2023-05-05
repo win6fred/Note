@@ -4,4 +4,5 @@ unmodify：文件已加入到git库，未修改，文件内容与本地库的文
 modified：文件已加入到git库，经过修改，文件内容与本地库的文件快照不一致
 staged：暂存状态
 
+rwe  fasfasd ad 
 
