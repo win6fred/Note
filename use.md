@@ -3,7 +3,7 @@ https://blog.csdn.net/stage98/article/details/125741395
 
 
 ##### 从远程仓库克隆项目至工作台
-``` git clone xxxx ```
+```git clone xxxx ```
  
 ##### 工作台上对项目进行修改后，提交到暂存区
 ``` git add . ```
