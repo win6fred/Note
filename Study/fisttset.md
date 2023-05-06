@@ -15,7 +15,7 @@ puts markdown.to_html
 ### ad na,
 
 
-666.
+666
 
 
 
