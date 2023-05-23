@@ -28,6 +28,6 @@ git commit -m "提交注释"
 git push origin  分支名称
 或者直接 git push
 
-正常来说这三部就够了.
+正常来说这三部就够了
 
 
