@@ -1,0 +1,14 @@
+
+##NRLuma
+1.將Strength設到最大 , 調整KernelStr來平衡雜訊壓抑跟細節保留。
+2.若KernelStr無法達到預期效果 , 再微調KernelStrByDiff。
+3.適當調降Strength。
+
+
+##NRLuma_Adv
+1.調整EdgeTh來區分edge區和non-edge區 , 可藉由debug模式以方便觀察結果。
+2.先将NRLuma_Adv開到最強(Strength和SmoDeltaLut都設最大) , 觀察極限 , 若覺得NR效果不明顯 , 只能調弱Sharpness , 或是調強NRLuma , 或其他NR模块。
+3.调整edge區去躁參數 , 建议先使用默认值为基础 , 直接调整SmoDeltaSft即可 , 若有需求再调整SmoDeltaLut。
+4.若有需求 , 會依據hue或saturation或motion調整 , 則適當降弱Strength , 再调整StrengthByHue或StrengthBySat或StrengthByMot。
+
+
