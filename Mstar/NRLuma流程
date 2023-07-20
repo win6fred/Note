@@ -1,24 +1,31 @@
-##NRLuma调整步骤
+##NRLuma 调整步骤
 1.將Strength設到最大,調整KernelStr來平衡雜訊壓抑跟細節保留。
 2.若KernelStr無法達到預期效果,再微調KernelStrByDiff。
 3.適當調降Strength。
 
-##NRLuma_Adv调整步骤
+##NRLuma_Adv 调整步骤
 1.調整EdgeTh來區分edge區和non-edge區,可藉由debug模式以方便觀察結果。
 2.先将NRLuma_Adv開到最強(Strength和SmoDeltaLut都設最大),觀察極限,若覺得NR效果不明顯,只能調弱Sharpness,或是調強NRLuma,或其他NR模块。
 3.调整edge區去躁參數,建议先使用默认值为基础,直接调整SmoDeltaSft即可,若有需求再调整SmoDeltaLut。
 4.若有需求,會依據hue或saturation或motion調整,則適當降弱Strength,再调整StrengthByHue或StrengthBySat或StrengthByMot。
 
-##NRChorma调整步骤
+##NRChorma 调整步骤
 1.調整MatchRatio和UvTh,可以觀測到colornoise會散開,過強會有色彩溢出的現象,調整到可接受的範圍。
 2.降低StrengthByCEdge,進一步壓抑有色彩溢出的部分。
 
-##NRChorma_Adv调整步骤
+##NRChorma_Adv 调整步骤
 1.MotionClip先设定为0。
 2.观察静态区,调整MaxStrength和StrengthByMot,将NR调整到一个可接受的色躁范围。
 3.观察动态区,调整MotionClip,将移动的部分,基于步骤一的NR强度,做加强的动作,若调整MotionClip程度不够强,可回去步骤一做强度的加强。
 4.如有需要,可调整MotionColorReduce,针对移动的部分,做饱和度的压抑,这个动作可帮忙NRChroma_Adv更容易的移除色躁。若不希望影像看到移动区的饱和有下降,可调整MotionColorRecover将移动区的饱和再拉回来
 
+##NRChorma_Pre 调整步骤
+1.将Strength 设最大。
+2.将BlendTh 和  BlendGap 都设  0，观察 mean filter 的效果，如有需求再调整  MeanFilterTh 和 MaskGenTh。
+3.将BlendTh 设  1023，观察  median filter 的效果，如有需求再调整  MedianFilterTh 和 MaskGenTh。
+4.调整  BlendTh 和  BlendGap，适当分配  mean filter 和 median filter 范围，可搭配  Debug 模式以方便观察。
+5.观察动态区色噪，再微调 MotionEnhance。
+6.调整  Strength，减轻色溢
 
 
 
