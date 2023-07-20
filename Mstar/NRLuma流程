@@ -1,31 +1,45 @@
+##NR3D ON 调整步骤
+1. 首先针对静止画面调整NR3D 强度,降低画面noise 跳动的程度。
+调整NR3D 强度,目标是让画面整体看起来安定。建议TF.Str 设63,将MD.Gain 增加至画面变安定即停 止。若 MD.Gain 需要设很大才能让画面安定,可以适时增加 MD.Thd,但建议不要超过10。
+2. 接着针对物体移动过后区域NR3D 强度变化做调整。
+主要调整M2S.LUT。M2S.LUT 曲线不要设太陡,否则物体移动过后区域由糊到清楚的转换边界会很明显 且不自然。
+ 可以基于建议值来做微调,如果比较不希望看见残影则需要设大一点的值,此时物体移动过后 区 域 的 NRLuma 会越强且维持越久,NR3D 越弱,看起来比较扰动；相反的如果希望物体移动后区域清楚一些, 能接受一些残影,则将值设小一些,扰动会比较小但可能会有颗粒 noise 跑出来。
+建议值：{24, 18, 11, 8, 7, 7, 6, 6, 6, 5, 5, 5, 5, 4, 4, 4}
+3. 微调移动模糊与noise 程度的平衡。
+调整 Y.SF.BlendLUT,由左至右代表动态区到静态区域。将值慢慢加大至移动模糊与 noise 程度都能接受 的程度。最后一个值建议固定在 0 才能维持静止画面的细节。建议同时搭配 NRLuma 的 BlendRatio 与 FilterLevel 做调整。
+针对移动过后的噪声,除了根据motion 调整NR2D 强度外,也可调整Y.SF.BlendOffset,针对 motion 来 补偿一点NR3D,以降低噪声。且因为只会更新于NR3D 的参考帧,所以不会影响到影像画面。
+4. 针对拖影严重的亮度,可利用MD.GainByY 做微调。将对应亮度区域的值慢慢下降至拖影与noise 都可接受的 程度。
+5.当 gain 越来越高,移动 noise 若都只靠 NRLuma 是不够的,此时可以修改 TF.LUT,让曲线下降得更缓慢一些 来增加移动区域 NR3D 的强度,但同时也须考虑拖影变严重的程度。最后一个值不用一定要设 0,但若造成移 动物体边缘出现粉红色拖影,可透过 AREn 的功能,限制较亮、较动的 NR3D 强度,以避免这种拖影发生。
+
+
 ##NRLuma 调整步骤
-1.將Strength設到最大,調整KernelStr來平衡雜訊壓抑跟細節保留。
-2.若KernelStr無法達到預期效果,再微調KernelStrByDiff。
-3.適當調降Strength。
+1. 將Strength設到最大,調整KernelStr來平衡雜訊壓抑跟細節保留。
+2. 若KernelStr無法達到預期效果,再微調KernelStrByDiff。
+3. 適當調降Strength。
 
 ##NRLuma_Adv 调整步骤
-1.調整EdgeTh來區分edge區和non-edge區,可藉由debug模式以方便觀察結果。
-2.先将NRLuma_Adv開到最強(Strength和SmoDeltaLut都設最大),觀察極限,若覺得NR效果不明顯,只能調弱Sharpness,或是調強NRLuma,或其他NR模块。
-3.调整edge區去躁參數,建议先使用默认值为基础,直接调整SmoDeltaSft即可,若有需求再调整SmoDeltaLut。
-4.若有需求,會依據hue或saturation或motion調整,則適當降弱Strength,再调整StrengthByHue或StrengthBySat或StrengthByMot。
+1. 調整EdgeTh來區分edge區和non-edge區,可藉由debug模式以方便觀察結果。
+2. 先将NRLuma_Adv開到最強(Strength和SmoDeltaLut都設最大),觀察極限,若覺得NR效果不明顯,只能調弱Sharpness,或是調強NRLuma,或其他NR模块。
+3. 调整edge區去躁參數,建议先使用默认值为基础,直接调整SmoDeltaSft即可,若有需求再调整SmoDeltaLut。
+4. 若有需求,會依據hue或saturation或motion調整,則適當降弱Strength,再调整StrengthByHue或StrengthBySat或StrengthByMot。
 
 ##NRChorma 调整步骤
-1.調整MatchRatio和UvTh,可以觀測到colornoise會散開,過強會有色彩溢出的現象,調整到可接受的範圍。
-2.降低StrengthByCEdge,進一步壓抑有色彩溢出的部分。
+1. 調整MatchRatio和UvTh,可以觀測到colornoise會散開,過強會有色彩溢出的現象,調整到可接受的範圍。
+2. 降低StrengthByCEdge,進一步壓抑有色彩溢出的部分。
 
 ##NRChorma_Adv 调整步骤
-1.MotionClip先设定为0。
-2.观察静态区,调整MaxStrength和StrengthByMot,将NR调整到一个可接受的色躁范围。
-3.观察动态区,调整MotionClip,将移动的部分,基于步骤一的NR强度,做加强的动作,若调整MotionClip程度不够强,可回去步骤一做强度的加强。
-4.如有需要,可调整MotionColorReduce,针对移动的部分,做饱和度的压抑,这个动作可帮忙NRChroma_Adv更容易的移除色躁。若不希望影像看到移动区的饱和有下降,可调整MotionColorRecover将移动区的饱和再拉回来
+1. MotionClip先设定为0。
+2. 观察静态区,调整MaxStrength和StrengthByMot,将NR调整到一个可接受的色躁范围。
+3. 观察动态区,调整MotionClip,将移动的部分,基于步骤一的NR强度,做加强的动作,若调整MotionClip程度不够强,可回去步骤一做强度的加强。
+4. 如有需要,可调整MotionColorReduce,针对移动的部分,做饱和度的压抑,这个动作可帮忙NRChroma_Adv更容易的移除色躁。若不希望影像看到移动区的饱和有下降,可调整MotionColorRecover将移动区的饱和再拉回来
 
 ##NRChorma_Pre 调整步骤
-1.将Strength 设最大。
-2.将BlendTh 和  BlendGap 都设  0，观察 mean filter 的效果，如有需求再调整  MeanFilterTh 和 MaskGenTh。
-3.将BlendTh 设  1023，观察  median filter 的效果，如有需求再调整  MedianFilterTh 和 MaskGenTh。
-4.调整  BlendTh 和  BlendGap，适当分配  mean filter 和 median filter 范围，可搭配  Debug 模式以方便观察。
-5.观察动态区色噪，再微调 MotionEnhance。
-6.调整  Strength，减轻色溢
+1. 将Strength 设最大。
+2. 将BlendTh 和BlendGap 都设0,观察 mean filter 的效果,如有需求再调整MeanFilterTh 和 MaskGenTh。
+3. 将BlendTh 设1023,观察median filter 的效果,如有需求再调整MedianFilterTh 和 MaskGenTh。
+4. 调整BlendTh 和BlendGap,适当分配mean filter 和 median filter 范围,可搭配Debug 模式以方便观察。
+5. 观察动态区色噪,再微调 MotionEnhance。
+6. 调整Strength,减轻色溢
 
 
 
