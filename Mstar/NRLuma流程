@@ -1,4 +1,3 @@
-
 ##NRLuma
 1.將Strength設到最大 , 調整KernelStr來平衡雜訊壓抑跟細節保留。
 2.若KernelStr無法達到預期效果 , 再微調KernelStrByDiff。
