@@ -1,3 +1,5 @@
+###sharpness###
+
 1. 觀察整体  edge 強度，初步調整  OverShootGain 和 UnderShootGain 到适当强度即可。
 2. 总共有  6 种不同的  edge filter，无向性  edge 和方向性  edge 分别都有高/中/中低频，可以先调整混合方式到 完全用某一种  filter，并观察每种  filter 的效果，可以搭配  debug mode 以方便观察。
 3. 调整无向性  edge 的频段。
@@ -21,5 +23,7 @@
     依据  motion 调降  edge，建议以调整  GainByMot 和 StdAdjByMot 为主。
     亦可尝试调整  CorByMot 和  DetailGainByMot 和  SmoBlendByMot。
     建议搭配  3DNR/NRLuma/NRLuma_Adv 反复调整。
+
+
 
 
