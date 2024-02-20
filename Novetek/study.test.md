@@ -10,7 +10,7 @@
 *Over Exp Cnt：過曝區塊的計數值，由  NVT_AE 算法提供
 以下参数在NT9856x中未提及
 *Exp. Value (EV)：此參數為供自動曝光演算法計算曝光參數使用。數值愈大，表示環境亮度愈高；數值愈低，表示環境亮度愈低，EV=2LVx10
-*Enhance ISO：此參數表示 WDR/HDR 當前 TNR 參數所參考的 ISO 值
+*Enhance ISO：此參數表示 WDR/HDR 當前 TNR 參數所參考的 ISO 值 
 
 
 
