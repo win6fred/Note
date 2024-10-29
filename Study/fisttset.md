@@ -3,6 +3,5 @@
 
    
 
-for teset
+for test
 
-.
