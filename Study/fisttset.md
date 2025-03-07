@@ -1,6 +1,6 @@
 # 测试使用
 
 
-for test
+for test 20
 
 
