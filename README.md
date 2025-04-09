@@ -9,8 +9,3 @@ git commit -m "note"
 git push
 
 
-
-
-
-
-.
