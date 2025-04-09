@@ -36,4 +36,3 @@ git commit -m "note"
 git push 
 
 
-s
