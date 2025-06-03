@@ -37,6 +37,7 @@ git push
 
 
 
+# 登录
 掉git之后需要指定账户
 git config --global user.email "邮箱地址"
 git config --global user.name "GitHub名字"
