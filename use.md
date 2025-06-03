@@ -29,13 +29,10 @@ git push origin  分支名称
 或者直接 git push
 
 正常来说这三部就够了
-
 # 示例：
 git add .
 git commit -m "note"
 git push 
-
-
 
 # 登录
 掉git之后需要指定账户
