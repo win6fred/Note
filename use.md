@@ -26,7 +26,9 @@ git push origin  分支名称
 正常来说这三步就够了
 # 示例：
 git add .
+
 git commit -m "note"
+
 git push 
 
 # 登录
