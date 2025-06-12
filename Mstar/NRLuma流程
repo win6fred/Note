@@ -11,7 +11,6 @@
 4. 针对拖影严重的亮度,可利用MD.GainByY 做微调。将对应亮度区域的值慢慢下降至拖影与noise 都可接受的 程度。
 5.当 gain 越来越高,移动 noise 若都只靠 NRLuma 是不够的,此时可以修改 TF.LUT,让曲线下降得更缓慢一些 来增加移动区域 NR3D 的强度,但同时也须考虑拖影变严重的程度。最后一个值不用一定要设 0,但若造成移 动物体边缘出现粉红色拖影,可透过 AREn 的功能,限制较亮、较动的 NR3D 强度,以避免这种拖影发生。
 
-
 ##NRLuma 调整步骤
 1. 將Strength設到最大,調整KernelStr來平衡雜訊壓抑跟細節保留。
 2. 若KernelStr無法達到預期效果,再微調KernelStrByDiff。
@@ -40,8 +39,6 @@
 4. 调整BlendTh 和BlendGap,适当分配mean filter 和 median filter 范围,可搭配Debug 模式以方便观察。
 5. 观察动态区色噪,再微调 MotionEnhance。
 6. 调整Strength,减轻色溢
-
-
 
 ##..
 
