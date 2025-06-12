@@ -1,4 +1,4 @@
-###sharpness###
+### sharpness ###
 
 1. 观察整体edge 強度，初步調整 OverShootGain 和 UnderShootGain 到适当强度即可。
 2. 总共有 6 种不同的 edge filter，无向性 edge 和方向性 edge 分别都有高/中/中低频，可以先调整混合方式到 完全用某一种 filter，并观察每种 filter 的效果，可以搭配 debug mode 以方便观察。
