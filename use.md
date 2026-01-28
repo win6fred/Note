@@ -29,7 +29,7 @@ git add .
 
 git commit -m "note"
 
-git push 
+git push  
 
 # 登录
 掉git之后需要指定账户
