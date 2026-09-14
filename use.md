@@ -39,7 +39,7 @@ git config --global user.email "邮箱地址"
 git config --global user.name "GitHub名字"
 
 .
-
+...
 
 
 
